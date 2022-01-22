@@ -21,29 +21,32 @@ public class Postagem {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	
-	@NotNull
-	@Size(min = 5, max = 100)
+	@NotBlank(message = "O atributo título é Obrigatório!")
+	@Size(min = 5, max = 100, message = "O título deve ter entre 5 a 100 caracteres!")
 	private String titulo;
 	
-	@NotNull
-	@Size(min = 10, max = 500)
+	@NotBlank(message = "O atributo texto é Obrigatório!")
 	private String texto;
 	
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date date = new java.sql.Date(System.currentTimeMillis());
+	@UpdateTimestamp
+	private LocalDate date;
 	
 	@ManyToOne
 	@JsonIgnoreProperties("postagem")
 	private Tema tema;
+
+	@ManyToOne
+	@JsonIgnoreProperties("postagem")
+	private Usuario usuario;
 	
 	// -------------------------- Getters and Setters ---------------------------
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -63,23 +66,27 @@ public class Postagem {
 		this.texto = texto;
 	}
 
-	public Date getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
 	}
-	
 
 	public Tema getTema() {
 		return tema;
 	}
-	
 
 	public void setTema(Tema tema) {
 		this.tema = tema;
 	}
-	
-	
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 }
