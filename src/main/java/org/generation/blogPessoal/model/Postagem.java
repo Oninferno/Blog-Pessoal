@@ -1,22 +1,21 @@
 package org.generation.blogPessoal.model;
 
-import java.util.Date;
-
+import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import org.hibernate.annotations.UpdateTimestamp;
+
 @Entity
-@Table(name = "postagem")
+@Table(name = "tb_postagem")
 public class Postagem {
 	
 	@Id
@@ -39,54 +38,93 @@ public class Postagem {
 
 	@ManyToOne
 	@JsonIgnoreProperties("postagem")
-	private Usuario usuario;
+	private User usuario;
 	
 	// -------------------------- Getters and Setters ---------------------------
-	public Long getId() {
-		return id;
-	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
 
-	public String getTitulo() {
-		return titulo;
-	}
+    /**
+     * @return Long return the id
+     */
+    public Long getId() {
+        return id;
+    }
 
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
-	}
+    /**
+     * @param id the id to set
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public String getTexto() {
-		return texto;
-	}
+    /**
+     * @return String return the titulo
+     */
+    public String getTitulo() {
+        return titulo;
+    }
 
-	public void setTexto(String texto) {
-		this.texto = texto;
-	}
+    /**
+     * @param titulo the titulo to set
+     */
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
 
-	public LocalDate getDate() {
-		return date;
-	}
+    /**
+     * @return String return the texto
+     */
+    public String getTexto() {
+        return texto;
+    }
 
-	public void setDate(LocalDate date) {
-		this.date = date;
-	}
+    /**
+     * @param texto the texto to set
+     */
+    public void setTexto(String texto) {
+        this.texto = texto;
+    }
 
-	public Tema getTema() {
-		return tema;
-	}
+    /**
+     * @return LocalDate return the date
+     */
+    public LocalDate getDate() {
+        return date;
+    }
 
-	public void setTema(Tema tema) {
-		this.tema = tema;
-	}
+    /**
+     * @param date the date to set
+     */
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
 
-	public Usuario getUsuario() {
-		return usuario;
-	}
+    /**
+     * @return Tema return the tema
+     */
+    public Tema getTema() {
+        return tema;
+    }
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
+    /**
+     * @param tema the tema to set
+     */
+    public void setTema(Tema tema) {
+        this.tema = tema;
+    }
+
+    /**
+     * @return User return the usuario
+     */
+    public User getUsuario() {
+        return usuario;
+    }
+
+    /**
+     * @param usuario the usuario to set
+     */
+    public void setUsuario(User usuario) {
+        this.usuario = usuario;
+    }
+
 }
