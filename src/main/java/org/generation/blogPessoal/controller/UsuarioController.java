@@ -5,6 +5,10 @@ import java.util.Optional;
 
 import javax.validation.Valid;
 
+import org.generation.blogPessoal.model.UserLogin;
+import org.generation.blogPessoal.model.User;
+import org.generation.blogPessoal.repository.UsuarioRepository;
+import org.generation.blogPessoal.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,33 +33,33 @@ public class UsuarioController {
 	private UsuarioRepository repository;
 
 	@GetMapping("/all")
-	public ResponseEntity <List<Usuario>> getAll() {
+	public ResponseEntity <List<User>> getAll() {
 		return ResponseEntity.ok(repository.findAll());
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<Usuario> getById(@PathVariable long id) {
+	public ResponseEntity<User> getById(@PathVariable long id) {
 		return repository.findById(id)
 				.map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
 	}
 
 	@PostMapping("/logar")
-	public ResponseEntity<UsuarioLogin> autenticationUsuario(@RequestBody Optional<UsuarioLogin> usuario) {
+	public ResponseEntity<UserLogin> autenticationUsuario(@RequestBody Optional<UserLogin> usuario) {
 		return service.logarUsuario(usuario)
 				.map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
 	}
 
 	@PostMapping("/cadastrar")
-	public ResponseEntity<Usuario> postUsuario(@Valid @RequestBody Usuario usuario) {
+	public ResponseEntity<User> postUsuario(@Valid @RequestBody User usuario) {
 		return service.cadastrarUsuario(usuario)
 				.map(resp -> ResponseEntity.status(HttpStatus.CREATED).body(resp))
 				.orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
 	}
 
 	@PutMapping("/atualizar")
-	public ResponseEntity<Usuario> putUsuario(@Valid @RequestBody Usuario usuario){
+	public ResponseEntity<User> putUsuario(@Valid @RequestBody User usuario){
 		return service.atualizarUsuario(usuario)
 				.map(resp -> ResponseEntity.status(HttpStatus.OK).body(resp))
 				.orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());

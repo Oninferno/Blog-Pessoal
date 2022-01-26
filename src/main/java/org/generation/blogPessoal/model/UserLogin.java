@@ -18,59 +18,102 @@ public class UserLogin {
 
 //------------------------Getters and Setters------------------------
 
-	public Long getId() {
-		return id;
-	}
+    /**
+     * @return Long return the id
+     */
+    public Long getId() {
+        return id;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    /**
+     * @param id the id to set
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public String getNome() {
-		return nome;
-	}
+    /**
+     * @return String return the nome
+     */
+    public String getNome() {
+        return nome;
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    /**
+     * @param nome the nome to set
+     */
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-	public String getUsuario() {
-		return usuario;
-	}
+    /**
+     * @return String return the usuario
+     */
+    public String getUsuario() {
+        return usuario;
+    }
 
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
-	}
+    /**
+     * @param usuario the usuario to set
+     */
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
 
-	public String getFoto() {
-		return foto;
-	}
+    /**
+     * @return String return the foto
+     */
+    public String getFoto() {
+        return foto;
+    }
 
-	public void setFoto(String foto) {
-		this.foto = foto;
-	}
+    /**
+     * @param foto the foto to set
+     */
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
 
-	public String getSenha() {
-		return senha;
-	}
+    /**
+     * @return String return the senha
+     */
+    public String getSenha() {
+        return senha;
+    }
 
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
+    /**
+     * @param senha the senha to set
+     */
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
 
-	public String getToken() {
-		return token;
-	}
+    /**
+     * @return String return the token
+     */
+    public String getToken() {
+        return token;
+    }
 
-	public void setToken(String token) {
-		this.token = token;
-	}
+    /**
+     * @param token the token to set
+     */
+    public void setToken(String token) {
+        this.token = token;
+    }
 
-	public String getTipo() {
-		return tipo;
-	}
+    /**
+     * @return String return the tipo
+     */
+    public String getTipo() {
+        return tipo;
+    }
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
+    /**
+     * @param tipo the tipo to set
+     */
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
 }
