@@ -54,10 +54,11 @@ public class User {
 		this.senha = senha;
 	}
 
+    public User() {
+      
+    }
+
 //------------------------Getters and Setters------------------------
-
-
-
     /**
      * @return Long return the id
      */

@@ -42,11 +42,12 @@ public class UsuarioService {
 		Optional<User> usuario = repository.findByUsuario(user.get().getUsuario());
 		if(usuario.isPresent()) {
 			if(compararSenhas(user.get().getSenha(), usuario.get().getSenha())) {
-				user.get().setId(user.get().getId());
-				user.get().setNome(user.get().getNome());
-				user.get().setFoto(user.get().getFoto());
-				user.get().setSenha(user.get().getSenha());
-				user.get().setToken(generatorBasicToken(user.get().getUsuario(), user.get().getSenha()));
+				user.get().setId(usuario.get().getId());
+				user.get().setNome(usuario.get().getNome());
+				user.get().setFoto(usuario.get().getFoto());
+				user.get().setSenha(usuario.get().getSenha());
+				user.get().setToken(generatorBasicToken(usuario.get().getUsuario(), usuario.get().getSenha()));
+				System.out.println("\n\n\nUser: " + user.get().devolve());
 				return user;
 			}
 		}
