@@ -26,12 +26,12 @@ public class SwaggerConfig {
 								.name("Augusto Cardoso")
 								.url("<https://brazil.generation.org/>"))
 						.contact(new Contact()
-								.name("Github Boaz")
-								.url("<https://github.com/GustavoBoaz/>")
-								.email("gustavo.boaz@hotmail.com")))
+								.name("Github Augusto")
+								.url("<https://github.com/Oninferno/>")
+								.email("augustocx15@gmail.com")))
 				.externalDocs(new ExternalDocumentation()
 						.description("Github Project")
-						.url("<https://github.com/GustavoBoaz/project_Gees>"));
+						.url("<https://github.com/Oninferno/Blog-Pessoal>"));
 	}
 
 	private ApiResponse createApiResponse(String message) {
