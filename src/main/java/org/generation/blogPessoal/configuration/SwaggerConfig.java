@@ -19,37 +19,39 @@ public class SwaggerConfig {
 	public OpenAPI springOpenAPI() {
 		return new OpenAPI()
 				.info(new Info()
-						.title("Blog Pessoal")
-						.description("This is an Personal Blog")
-						.version("v0.0.1")
-						.license(new License()
-								.name("Augusto Cardoso")
-								.url("<https://brazil.generation.org/>"))
-						.contact(new Contact()
-								.name("Github Augusto")
-								.url("<https://github.com/Oninferno/>")
-								.email("augustocx15@gmail.com")))
+					.title("Blog Pessoal")
+					.description("Blog Pessoal desenvolvido na Generation Brasil")
+					.version("v0.0.1")
+				.license(new License()
+					.name("Augusto Cardoso")
+					.url("<https://brazil.generation.org/>"))
+				.contact(new Contact()
+					.name("Github Augusto")
+					.url("<https://github.com/Oninferno/>")
+					.email("augustocx15@gmail.com")))
 				.externalDocs(new ExternalDocumentation()
-						.description("Github Project")
-						.url("<https://github.com/Oninferno/Blog-Pessoal>"));
-	}
-
-	private ApiResponse createApiResponse(String message) {
-		return new ApiResponse().description(message);
+					.description("Github Project")
+					.url("<https://github.com/Oninferno/Blog-Pessoal>"));
 	}
 
 	@Bean
 	public OpenApiCustomiser customerGlobalResponseStatus() {
 		return openApi -> {
 			openApi.getPaths().values().forEach(pathItem -> pathItem.readOperations().forEach(operation -> {
-				ApiResponses api = operation.getResponses();
+				ApiResponses apiResponses = operation.getResponses();
 
-				api.addApiResponse("200", createApiResponse("Sucess!"));
-				api.addApiResponse("201", createApiResponse("Created!"));
-				api.addApiResponse("400", createApiResponse("Request error!"));
-				api.addApiResponse("401", createApiResponse("Not authorized!"));
-				api.addApiResponse("500", createApiResponse("Internal server Error!"));
+				apiResponses.addApiResponse("200", createApiResponse("Sucesso!"));
+				apiResponses.addApiResponse("201", createApiResponse("Objeto Persistido!"));
+				apiResponses.addApiResponse("204", createApiResponse("Objeto Excluído!"));
+				apiResponses.addApiResponse("400", createApiResponse("Erro na Requisição!"));
+				apiResponses.addApiResponse("401", createApiResponse("Acesso Não Autorizado!"));
+				apiResponses.addApiResponse("404", createApiResponse("Objeto Não Encontrado!"));
+				apiResponses.addApiResponse("500", createApiResponse("Erro na Aplicação!"));
 			}));
 		};
+	};
+
+	private ApiResponse createApiResponse(String message) {
+		return new ApiResponse().description(message);
 	}
 }
