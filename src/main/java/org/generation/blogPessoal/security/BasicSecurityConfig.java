@@ -24,17 +24,20 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
-		auth.userDetailsService(service);
-
-		auth.inMemoryAuthentication().withUser("boaz").password(passwordEncoder().encode("boaz"))
+		auth.inMemoryAuthentication().withUser("root").password(passwordEncoder().encode("root"))
 				.authorities("ROLE_ADMIN");
+		auth.userDetailsService(service);
+				
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-				.antMatchers(HttpMethod.POST, "/usuarios/cadastrar").permitAll()
+				.antMatchers("/**").permitAll()
 				.antMatchers(HttpMethod.POST, "/usuarios/logar").permitAll()
+				.antMatchers(HttpMethod.POST, "/usuarios/cadastrar").permitAll()
+				.antMatchers(HttpMethod.GET, "/postagens").permitAll()
+				.antMatchers(HttpMethod.GET, "/tema").permitAll()
 				.anyRequest().authenticated()
 				.and().httpBasic()
 				.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)

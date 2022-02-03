@@ -16,6 +16,10 @@ public class UserLogin {
 	
 	private String tipo;
 
+    public String devolve(){
+        return this.nome +'\t'+ this.usuario + '\t'+ this.foto + '\t'+ this.senha +'\t'+ this.token +'\t'+ this.tipo;
+    }
+
 //------------------------Getters and Setters------------------------
 
     /**
